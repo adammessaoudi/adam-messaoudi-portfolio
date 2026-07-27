@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam Messaoudi - ATS Resume</title>
+    <style>
+        @page {
+            size: 210mm 297mm;
+            margin: 4mm 10mm;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #111;
+            line-height: 1.22;
+            margin: 0;
+            padding: 0;
+            font-size: 8.5pt;
+            background-color: #fff;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 8px;
+            padding-bottom: 3px;
+        }
+        h1 {
+            font-size: 17.5pt;
+            margin: 0 0 3.5px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #000;
+            font-weight: 700;
+        }
+        .subtitle {
+            font-size: 9.5pt;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 3.5px;
+        }
+        .contact {
+            font-size: 8.2pt;
+            color: #333;
+            white-space: nowrap;
+        }
+        .cert-link, .linkedin-link {
+            color: #004499;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cert-link:hover, .linkedin-link:hover {
+            text-decoration: underline;
+        }
+        .contact span {
+            margin: 0 4px;
+            color: #666;
+        }
+        section {
+            margin-bottom: 3.5px;
+        }
+        h2 {
+            font-size: 9.1pt;
+            text-transform: uppercase;
+            border-bottom: 1.2px solid #222;
+            padding-bottom: 1px;
+            margin: 0 0 2px 0;
+            letter-spacing: 0.5px;
+            color: #000;
+            font-weight: 700;
+        }
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 8.4pt;
+            margin-top: 2.5px;
+        }
+        .item-sub {
+            display: flex;
+            justify-content: space-between;
+            font-style: normal;
+            font-size: 8.1pt;
+            color: #222;
+            margin-bottom: 1px;
+        }
+        .project-title {
+            font-style: normal;
+            font-size: 8.1pt;
+            color: #333;
+            margin-bottom: 1px;
+        }
+        ul {
+            margin: 1px 0 2px 0;
+            padding-left: 17px;
+        }
+        li {
+            margin-bottom: 0.8px;
+            font-size: 8.2pt;
+        }
+        .tech-stack {
+            font-size: 8.1pt;
+            margin-top: 1px;
+        }
+        .skills-list li {
+            margin-bottom: 1.2px;
+        }
+        p {
+            margin: 0;
+            font-size: 8.4pt;
+            line-height: 1.22;
+        }
+        @media print {
+            body { background: none; }
+            .container { padding: 0; width: 100%; max-width: 100%; }
+            .cert-link, .linkedin-link { color: #004499; text-decoration: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ADAM MESSAOUDI</h1>
+            <div class="subtitle">Data Engineer | Business Intelligence Engineer | Data Analyst</div>
+            <div class="contact">
+                Wolfsburg, Germany <span>|</span> 
+                +49 15510912077 <span>|</span> 
+                <a class="linkedin-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=adam.messaoudi67@gmail.com" target="_blank">adam.messaoudi67@gmail.com</a> <span>|</span> 
+                <a class="linkedin-link" href="https://linkedin.com/in/adammessaoudi" target="_blank">LinkedIn</a> <span>|</span>
+                <a class="linkedin-link" href="https://adammessaoudi.github.io/adam-messaoudi-portfolio/" target="_blank">adam-messaoudi-portfolio</a>
+            </div>
+        </header>
+
+        <section>
+            <h2>Professional Summary</h2>
+            <p>
+                Data Engineer experienced in ETL/ELT pipelines, data modeling, Microsoft Fabric Lakehouse, Power BI dashboards, SQL, Python automation, and business intelligence solutions. Skilled in transforming complex datasets into actionable insights and building scalable analytics platforms. Currently refining German language skills (B1 level) and motivated to contribute to international data engineering environments.
+            </p>
+        </section>
+
+        <section>
+            <h2>Professional Experience</h2>
+            
+            <div class="item-header">
+                <span>ZF Group</span>
+                <span>03/2025 – 09/2025</span>
+            </div>
+            <div class="item-sub">
+                <span>End-of-Studies Data Engineering Intern</span>
+                <span>Hanover, Germany</span>
+            </div>
+            <div class="project-title">Project: Digital Monitoring Solution for ZF Global Workshop Network</div>
+            <ul>
+                <li>Architected and deployed scalable ETL/ELT pipelines using Microsoft Fabric and Salesforce, integrating 130,000+ records into a centralized Lakehouse environment.</li>
+                <li>Constructed an enterprise Microsoft Fabric solution leveraging OneLake, Dataflows Gen2, and Semantic Models to automate end-to-end data transformation workflows.</li>
+                <li>Engineered 5 interactive Power BI dashboards with standardized DAX measures, enabling self-service analytics for 4,600+ workshops in the global network.</li>
+                <li>Automated Google Maps review data collection using Python and Selenium across 4,600+ workshops, enriching business analytics with clean sentiment data.</li>
+                <li>Formulated an MLOps forecasting pipeline with MLflow tracking, streamlining model retraining and predictive performance analysis.</li>
+                <li class="tech-stack"><strong>Technologies:</strong> Microsoft Power BI, Microsoft Fabric (OneLake, Dataflows Gen2), Python (Selenium, Pandas), MLOps, Excel.</li>
+            </ul>
+
+            <div class="item-header">
+                <span>Infraway Tunisia</span>
+                <span>06/2024 – 09/2024</span>
+            </div>
+            <div class="item-sub">
+                <span>Data Engineering Intern</span>
+                <span>Tunis, Tunisia</span>
+            </div>
+            <div class="project-title">Project: Telecom Management Optimization Through Data-Driven Insights</div>
+            <ul>
+                <li>Analyzed 10.01M+ telecommunications call records across 43 attributes via EDA to uncover key network traffic trends.</li>
+                <li>Streamlined ETL workflows by building automated Talend staging jobs, reducing data processing time by 45% and enabling daily dashboard refreshes.</li>
+                <li>Designed 2 Power BI dashboards (Service Quality & Profitability) for Sales Managers and Service Operators, optimizing 63 B2B accounts.</li>
+                <li>Trained Exponential Smoothing forecasting models in Python (Pandas, Statsmodels) to predict monthly call volumes and support capacity planning.</li>
+                <li class="tech-stack"><strong>Technologies:</strong> MySQL, Talend, Power BI, Python, Machine Learning (Statsmodels, Scikit-Learn), SQL.</li>
+            </ul>
+
+            <div class="item-header">
+                <span>PGS International</span>
+                <span>06/2023 – 09/2023</span>
+            </div>
+            <div class="item-sub">
+                <span>Business Intelligence Intern</span>
+                <span>Ben Arous, Tunisia</span>
+            </div>
+            <div class="project-title">Project: Data-Driven Inventory Optimization Platform for Oil Depots</div>
+            <ul>
+                <li>Centralized oil depot inventory data across 5 depot locations into a PostgreSQL data warehouse using automated Talend ETL workflows.</li>
+                <li>Visualized real-time stock levels and 10+ operational KPIs across 3 Power BI dashboards to track inventory performance.</li>
+                <li>Orchestrated Python web scrapers (Selenium, BeautifulSoup) parsing market data across 4 target industry sources daily to enrich analytics.</li>
+                <li>Optimized 10+ backend REST API routes of a Flask analytics platform to support data-driven inventory management.</li>
+                <li class="tech-stack"><strong>Technologies:</strong> Talend, PostgreSQL, Power BI, Python, Angular, Flask, Machine Learning, Web Scraping (Selenium, BeautifulSoup).</li>
+            </ul>
+
+            <div class="item-header">
+                <span>Orange Tunisia</span>
+                <span>06/2022 – 09/2022</span>
+            </div>
+            <div class="item-sub">
+                <span>Data Analyst Intern</span>
+                <span>Tunis, Tunisia</span>
+            </div>
+            <div class="project-title">Project: Sales Performance Tracking Application</div>
+            <ul>
+                <li>Pioneered an interactive Power BI sales tracking dashboard to monitor monthly customer sales performance across key revenue indicators.</li>
+                <li>Processed unstructured JSON sales logs using Python and MongoDB, automating data cleaning pipelines for 5 core product lines.</li>
+                <li>Refined MongoDB query aggregations and Power BI data models to accelerate dashboard refresh times and enable real-time insights.</li>
+                <li>Delivered 10+ weekly analytical sales reports, empowering commercial leads to optimize revenue forecasting.</li>
+                <li class="tech-stack"><strong>Technologies:</strong> Power BI, Python, MongoDB, Data Visualization, MongoDB Aggregation.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <ul class="skills-list">
+                <li><strong>Data Engineering & BI:</strong> Microsoft Fabric (OneLake, Lakehouse, Dataflows Gen2, Pipelines, Semantic Models), Power BI (Service, Power Query, DAX), ETL/ELT, Data Pipelines, Data Governance, Data Warehousing, Data Modeling, Dimensional Modeling, Data Integration, Data Architecture, Data Quality, Data Validation, Data Orchestration, KPI Reporting.</li>
+                <li><strong>Machine Learning & Cloud:</strong> Machine Learning, Predictive Modeling, Time Series Forecasting, MLOps, Microsoft Azure (Azure Storage, Azure SQL), Salesforce, Microsoft Dynamics 365, Azure Entra ID, SAP.</li>
+                <li><strong>Databases & Formats:</strong> PostgreSQL, MySQL, Microsoft SQL Server (SSIS, SSMS, SSRS), MongoDB, SQL, CSV, JSON, YAML.</li>
+                <li><strong>Programming & Tools:</strong> Python (Pandas, Flask), Git, GitHub, Docker, Jenkins, CI/CD, Linux, REST API Integration, OAuth, Excel.</li>
+                <li><strong>Data Collection & Automation:</strong> Web Scraping (Selenium, BeautifulSoup), Data Extraction, Data Cleaning, Data Enrichment, Workflow Automation.</li>
+                <li><strong>Methodologies:</strong> Agile/Scrum, Requirements Analysis, KPI Development.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="item-header">
+                <span>ESPRIT School of Engineering – Tunisia</span>
+                <span>Graduated: 10/2025</span>
+            </div>
+            <div class="item-sub">
+                <span>Engineering Degree in Computer Science (Master’s Equivalent)</span>
+                <span></span>
+            </div>
+
+            <div class="item-header" style="margin-top: 2px;">
+                <span>Schmalkalden University of Applied Sciences – Germany</span>
+                <span>10/2024 – 09/2025</span>
+            </div>
+            <div class="item-sub">
+                <span>Exchange Program in Computer Science</span>
+                <span></span>
+            </div>
+
+            <div class="item-header" style="margin-top: 2px;">
+                <span>Borj Cedria High School – Tunisia</span>
+                <span>08/2020</span>
+            </div>
+            <div class="item-sub">
+                <span>Baccalaureate in Experimental Sciences</span>
+                <span></span>
+            </div>
+        </section>
+
+        <section>
+            <h2>Certifications</h2>
+            <ul>
+                <li><a class="cert-link" href="https://www.coursera.org/account/accomplishments/certificate/EMVTWI6WTPAG" target="_blank"><strong>SAP Solution Implementation</strong> – SAP | Coursera</a> (11/2024)</li>
+                <li><a class="cert-link" href="https://www.coursera.org/account/accomplishments/certificate/UNUXC3XIV3NC" target="_blank"><strong>Microsoft Azure Cloud Services</strong> – Microsoft | Coursera</a> (10/2024)</li>
+                <li><a class="cert-link" href="https://www.coursera.org/account/accomplishments/specialization/certificate/3VMNKB5MDXIH" target="_blank"><strong>MLOps (Machine Learning Operations)</strong> – Duke University | Coursera</a> (10/2024)</li>
+                <li><a class="cert-link" href="https://www.coursera.org/account/accomplishments/certificate/59DWLMS1NOXW" target="_blank"><strong>Talend Data Integration</strong> – Talend | Coursera</a> (10/2024)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Languages</h2>
+            <p>
+                <strong>German:</strong> B1 (In Progress) &nbsp;|&nbsp; 
+                <strong>English:</strong> Fluent &nbsp;|&nbsp; 
+                <strong>French:</strong> Fluent &nbsp;|&nbsp; 
+                <strong>Arabic:</strong> Native &nbsp;|&nbsp; 
+                <strong>Spanish:</strong> Elementary
+            </p>
+        </section>
+    </div>
+</body>
+</html>
