@@ -1132,7 +1132,7 @@
 
                 <div class="terminal-input-row">
                     <span class="t-prompt">adam@data-engine:~$</span>
-                    <input type="text" class="terminal-input" id="term-input" placeholder="type command (e.g. help, whoami, list-all-projects, list-data-certs, tech-stack, clear)..." autofocus>
+                    <input type="text" class="terminal-input" id="term-input" placeholder="type command (e.g. help, whoami, list-all-projects, list-data-certs, tech-stack, clear)...">
                 </div>
             </div>
         </div>
@@ -2019,6 +2019,9 @@
         window.addEventListener('resize', initCanvas);
         initCanvas();
         drawCanvas();
+        if (!window.location.hash) {
+            window.scrollTo(0, 0);
+        }
 
         // Typing Effect
         const roles = ["Data Engineer", "BI Engineer", "Full-Stack Data Developer", "ETL Architect"];
