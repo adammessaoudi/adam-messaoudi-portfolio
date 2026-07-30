@@ -1,298 +1,2214 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="cyberpunk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adam Messaoudi - ATS Resume</title>
+    <title>Adam Messaoudi | Data Engineer & System Architect</title>
+    <meta name="description" content="Innovative Data Engineering & Full-Stack Portfolio of Adam Messaoudi. Microsoft Fabric, Power BI, Python, MLOps, Next.js, and Interactive Terminal Console.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        @page {
-            size: 210mm 297mm;
-            margin: 4mm 9mm;
+        /* Theme Variables */
+        :root[data-theme="cyberpunk"] {
+            --bg-deep: #050811;
+            --bg-surface: rgba(13, 19, 36, 0.85);
+            --bg-surface-hover: rgba(20, 29, 54, 0.95);
+            --border-line: rgba(255, 255, 255, 0.12);
+            --border-glow: rgba(0, 242, 254, 0.4);
+            --primary: #00f2fe;
+            --primary-glow: rgba(0, 242, 254, 0.4);
+            --secondary: #7f00ff;
+            --accent: #00f5d4;
+            --text-main: #f8fafc;
+            --text-sub: #cbd5e1;
+            --text-dim: #94a3b8;
+            --grad-primary: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            --grad-accent: linear-gradient(135deg, #00f5d4 0%, #00b4d8 100%);
+            --card-glow: rgba(0, 242, 254, 0.15);
+            --stat-bg: rgba(255, 255, 255, 0.05);
+            --terminal-bg: #090d16;
         }
+
+        :root[data-theme="midnight"] {
+            --bg-deep: #0b1329;
+            --bg-surface: rgba(21, 32, 64, 0.85);
+            --bg-surface-hover: rgba(30, 45, 88, 0.95);
+            --border-line: rgba(255, 255, 255, 0.14);
+            --border-glow: rgba(245, 158, 11, 0.45);
+            --primary: #f59e0b;
+            --primary-glow: rgba(245, 158, 11, 0.4);
+            --secondary: #6366f1;
+            --accent: #10b981;
+            --text-main: #f8fafc;
+            --text-sub: #e2e8f0;
+            --text-dim: #94a3b8;
+            --grad-primary: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            --grad-accent: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+            --card-glow: rgba(245, 158, 11, 0.15);
+            --stat-bg: rgba(255, 255, 255, 0.06);
+            --terminal-bg: #0d162d;
+        }
+
+        :root[data-theme="light"] {
+            --bg-deep: #f8fafc;
+            --bg-surface: rgba(255, 255, 255, 0.95);
+            --bg-surface-hover: rgba(241, 245, 249, 0.95);
+            --border-line: rgba(0, 0, 0, 0.12);
+            --border-glow: rgba(37, 99, 235, 0.35);
+            --primary: #2563eb;
+            --primary-glow: rgba(37, 99, 235, 0.3);
+            --secondary: #7c3aed;
+            --accent: #059669;
+            --text-main: #0f172a;
+            --text-sub: #334155;
+            --text-dim: #64748b;
+            --grad-primary: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            --grad-accent: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+            --card-glow: rgba(37, 99, 235, 0.1);
+            --stat-bg: rgba(37, 99, 235, 0.05);
+            --terminal-bg: #0f172a;
+        }
+
         * {
             box-sizing: border-box;
-        }
-        html, body {
-            width: 100%;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: #111;
-            line-height: 1.18;
             margin: 0;
             padding: 0;
-            font-size: 8.1pt;
-            background-color: #fff;
         }
-        .container {
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        body {
+            position: relative;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 800px;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.45;
+        }
+
+        .container {
+            max-width: 1240px;
             margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
         }
-        header {
-            text-align: center;
-            margin-bottom: 5px;
-            padding-bottom: 1.5px;
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            background: rgba(5, 8, 17, 0.82);
+            border-bottom: 1px solid var(--border-line);
         }
-        h1 {
-            font-size: 16.5pt;
-            margin: 0 0 2.5px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.7px;
-            color: #000;
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 76px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'JetBrains Mono', monospace;
             font-weight: 700;
-        }
-        .subtitle {
-            font-size: 9.0pt;
-            font-weight: 600;
-            color: #222;
-            margin-bottom: 2.5px;
-        }
-        .contact {
-            font-size: 7.9pt;
-            color: #333;
-            white-space: nowrap;
-        }
-        .cert-link, .linkedin-link {
-            color: #004499;
+            font-size: 1.15rem;
             text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .nav-avatar-mini {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .theme-switcher {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px;
+            border-radius: 20px;
+            border: 1px solid var(--border-line);
+        }
+
+        .theme-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            transition: all 0.2s ease;
+            color: var(--text-sub);
+        }
+
+        .theme-btn.active {
+            background: var(--primary);
+            color: #050811;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: var(--grad-primary);
+            color: #050811;
+            font-weight: 700;
+            font-size: 0.88rem;
+            text-decoration: none;
+            box-shadow: 0 0 20px var(--primary-glow);
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px var(--primary-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 60px 0;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1fr 440px;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .cyber-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid var(--primary-glow);
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            margin-bottom: 24px;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            box-shadow: 0 0 12px var(--accent);
+            animation: pulse-glow 1.8s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(0.9); opacity: 0.7; }
+            50% { transform: scale(1.3); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.7; }
+        }
+
+        .hero h1 {
+            font-size: 3.6rem;
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 .gradient-text {
+            background: var(--grad-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-role {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-role .typing-text {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+        }
+
+        .hero-bio {
+            font-size: 1.05rem;
+            color: var(--text-sub);
+            margin-bottom: 36px;
+            max-width: 620px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glow);
+            border-radius: 28px;
+            padding: 34px 26px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+            position: relative;
+            text-align: center;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--grad-primary);
+            border-radius: 28px 28px 0 0;
+        }
+
+        .avatar-frame {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px auto;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bg-deep);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        .avatar-glow-ring {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            background: var(--grad-primary);
+            z-index: 1;
+            animation: rotate-ring 10s linear infinite;
+            filter: blur(4px);
+        }
+
+        @keyframes rotate-ring {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-card h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .profile-location {
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
             font-weight: 600;
         }
-        .cert-link:hover, .linkedin-link:hover {
-            text-decoration: underline;
+
+        .profile-metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            text-align: left;
         }
-        .contact span {
-            margin: 0 3.5px;
-            color: #666;
+
+        .metric-card {
+            padding: 16px;
+            border-radius: 16px;
+            background: var(--stat-bg);
+            border: 1px solid var(--border-line);
+            text-decoration: none;
+            color: var(--text-main);
+            display: block;
+            cursor: pointer;
+            transition: all 0.25s ease;
         }
-        section {
-            margin-bottom: 3.2px;
+
+        .metric-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px var(--card-glow);
+            background: rgba(255, 255, 255, 0.08);
         }
-        h2 {
-            font-size: 8.8pt;
+
+        .metric-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .metric-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            font-size: 1.35rem;
+            color: var(--primary);
+        }
+
+        .metric-icon {
+            font-size: 1rem;
+            color: var(--accent);
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .metric-desc {
+            font-size: 0.72rem;
+            color: var(--text-sub);
+            margin-top: 3px;
+        }
+
+        /* Interactive IT Shell Terminal Section */
+        .terminal-section {
+            margin: 40px 0 80px 0;
+        }
+
+        .terminal-window {
+            background: var(--terminal-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal-header {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-line);
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .t-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .t-dot.red { background: #ff5f56; }
+        .t-dot.yellow { background: #ffbd2e; }
+        .t-dot.green { background: #27c93f; }
+
+        .terminal-title {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .terminal-chips {
+            display: flex;
+            gap: 8px;
+            padding: 12px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid var(--border-line);
+            flex-wrap: wrap;
+        }
+
+        .chip-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-line);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .chip-btn:hover {
+            background: var(--primary);
+            color: #050811;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .terminal-body {
+            padding: 20px;
+            min-height: 280px;
+            max-height: 420px;
+            overflow-y: auto;
+            color: #4af626;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .t-line { margin-bottom: 8px; word-break: break-word; }
+        .t-prompt { color: var(--primary); font-weight: 700; }
+        .t-cmd { color: var(--text-main); }
+        .t-output { color: var(--text-sub); }
+        .t-success { color: var(--accent); }
+        .t-highlight { color: #f59e0b; }
+
+        .terminal-input-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .terminal-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        /* Category Header Divider Banners */
+        .grid-category-header {
+            grid-column: 1 / -1;
+            margin: 20px 0 10px 0;
+            padding: 12px 18px;
+            border-radius: 12px;
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid var(--primary-glow);
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .grid-category-header.secondary {
+            background: rgba(127, 0, 255, 0.08);
+            border-color: rgba(127, 0, 255, 0.35);
+            color: #b57cff;
+        }
+
+        /* Interactive Visual Data Pipeline Architecture Graph */
+        .pipeline-flow-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            border-radius: 24px;
+            padding: 36px;
+            margin-bottom: 70px;
+        }
+
+        .pipeline-nodes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            position: relative;
+        }
+
+        .p-node {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-line);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .p-node:hover, .p-node.active {
+            border-color: var(--primary);
+            background: rgba(56, 189, 248, 0.08);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px var(--card-glow);
+        }
+
+        .p-node-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .p-node h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .p-node-sub {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .pipeline-details {
+            margin-top: 24px;
+            padding: 20px;
+            border-radius: 14px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-line);
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        /* Filter Tab Buttons */
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-line);
+            color: var(--text-sub);
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: #050811;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 44px;
+        }
+
+        .section-header .tag-subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            font-size: 0.85rem;
             text-transform: uppercase;
-            border-bottom: 1.1px solid #222;
-            padding-bottom: 0.8px;
-            margin: 0 0 1.5px 0;
-            letter-spacing: 0.45px;
-            color: #000;
-            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
         }
-        .item-header {
+
+        .section-header h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 28px;
+        }
+
+        .p-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(12px);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .p-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px var(--card-glow);
+        }
+
+        .p-header {
             display: flex;
             justify-content: space-between;
-            font-weight: 700;
-            font-size: 8.1pt;
-            margin-top: 1.8px;
+            align-items: center;
+            margin-bottom: 14px;
         }
-        .item-sub {
+
+        .cat-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .tag-data { background: rgba(0, 242, 254, 0.15); color: var(--primary); border: 1px solid var(--primary-glow); }
+        .tag-fullstack { background: rgba(127, 0, 255, 0.15); color: #b57cff; border: 1px solid rgba(127, 0, 255, 0.3); }
+        .tag-academic { background: rgba(0, 245, 212, 0.15); color: var(--accent); border: 1px solid rgba(0, 245, 212, 0.3); }
+
+        .p-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-dim);
+        }
+
+        .p-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.35;
+        }
+
+        .p-desc {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .p-bullets {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .p-bullets li {
+            position: relative;
+            padding-left: 18px;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            margin-bottom: 6px;
+        }
+
+        .p-bullets li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .tech-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-line);
+        }
+
+        .tech-tag {
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-line);
+            color: var(--text-sub);
+        }
+
+        /* Certifications Hub */
+        .cert-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 20px;
+        }
+
+        .holo-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            border-radius: 18px;
+            padding: 24px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .holo-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: 0 16px 32px var(--card-glow);
+        }
+
+        .cert-head {
             display: flex;
             justify-content: space-between;
-            font-style: normal;
-            font-size: 7.9pt;
-            color: #222;
-            margin-bottom: 0.8px;
+            align-items: center;
+            margin-bottom: 12px;
         }
-        .project-title {
-            font-style: normal;
-            font-size: 7.9pt;
-            color: #333;
-            margin-bottom: 0.8px;
+
+        .cert-icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(56, 189, 248, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.1rem;
         }
-        ul {
-            margin: 0.8px 0 1.2px 0;
-            padding-left: 15.5px;
+
+        .cert-badge-tag {
+            font-size: 0.72rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(0, 245, 212, 0.1);
         }
-        li {
-            margin-bottom: 0.5px;
-            font-size: 7.9pt;
+
+        .holo-card h4 {
+            font-size: 0.98rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.35;
         }
-        .tech-stack {
-            font-size: 7.8pt;
-            margin-top: 0.6px;
+
+        .cert-org {
+            font-size: 0.82rem;
+            color: var(--text-sub);
         }
-        .skills-list li {
-            margin-bottom: 0.8px;
+
+        .cert-id {
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-dim);
+            margin-top: 8px;
         }
-        p {
-            margin: 0;
-            font-size: 8.0pt;
-            line-height: 1.18;
+
+        /* Skills Matrix */
+        .skills-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
         }
-        @media print {
-            body { background: none; }
-            .container { padding: 0; width: 100%; max-width: 100%; }
-            .cert-link, .linkedin-link { color: #004499; text-decoration: none; }
+
+        .matrix-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            border-radius: 20px;
+            padding: 28px;
+        }
+
+        .matrix-box h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+        }
+
+        .matrix-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .m-badge {
+            padding: 7px 12px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-line);
+            font-size: 0.83rem;
+            color: var(--text-main);
+            transition: all 0.25s ease;
+        }
+
+        .m-badge:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.08);
+            transform: translateY(-2px);
+        }
+
+        /* Organizations Section */
+        .org-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .org-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            border-radius: 18px;
+            padding: 26px;
+        }
+
+        .org-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .org-role {
+            font-size: 0.88rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .org-desc {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+            line-height: 1.5;
+        }
+
+        /* Footer & Contact CTA */
+        .contact-cta {
+            padding: 80px 0 100px 0;
+        }
+
+        .cta-glass-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glow);
+            border-radius: 28px;
+            padding: 50px 40px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 60px var(--card-glow);
+        }
+
+        .cta-glass-box h2 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .cta-glass-box p {
+            font-size: 1.05rem;
+            color: var(--text-sub);
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .cta-link-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            padding: 36px 0;
+            border-top: 1px solid var(--border-line);
+            text-align: center;
+            color: var(--text-dim);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Mobile Styling */
+        @media (max-width: 900px) {
+            .container {
+                padding: 0 16px;
+            }
+            .nav-inner {
+                height: 66px;
+            }
+            .brand-logo {
+                font-size: 1.05rem;
+                gap: 8px;
+            }
+            .nav-avatar-mini {
+                width: 34px;
+                height: 34px;
+            }
+            .desktop-nav-cta {
+                display: none !important;
+            }
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 66px;
+                left: 0;
+                width: 100%;
+                background: var(--bg-surface);
+                border-bottom: 1px solid var(--border-glow);
+                flex-direction: column;
+                padding: 24px;
+                gap: 18px;
+                backdrop-filter: blur(24px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            }
+            .nav-menu.mobile-open {
+                display: flex !important;
+            }
+            .mobile-nav-toggle {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                width: 38px;
+                height: 38px;
+                border-radius: 10px;
+                background: rgba(255, 255, 255, 0.06);
+                border: 1px solid var(--border-line);
+                color: var(--text-main);
+                font-size: 1.1rem;
+                cursor: pointer;
+                flex-shrink: 0;
+            }
+            .hero {
+                padding: 105px 0 40px 0;
+            }
+            .hero-layout {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.15;
+            }
+            .cyber-badge {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+                line-height: 1.4;
+                white-space: normal;
+            }
+            .profile-card {
+                padding: 24px 18px;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .pipeline-nodes {
+                grid-template-columns: 1fr;
+            }
+            .skills-matrix {
+                grid-template-columns: 1fr;
+            }
+            .cert-cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .pipeline-flow-box {
+                padding: 20px;
+            }
+            .cta-glass-box {
+                padding: 30px 18px;
+            }
+            .cta-glass-box h2 {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (min-width: 901px) {
+            .mobile-nav-toggle {
+                display: none !important;
+            }
+            .mobile-only-cta {
+                display: none !important;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>ADAM MESSAOUDI</h1>
-            <div class="subtitle">Data Engineer | Business Intelligence Engineer | Data Analyst</div>
-            <div class="contact">
-                Wolfsburg, Germany <span>|</span> 
-                +49 15510912077 <span>|</span> 
-                <a class="linkedin-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=adam.messaoudi67@gmail.com" target="_blank">adam.messaoudi67@gmail.com</a> <span>|</span> 
-                <a class="linkedin-link" href="https://linkedin.com/in/adammessaoudi" target="_blank">LinkedIn</a> <span>|</span>
-                <a class="linkedin-link" href="https://adammessaoudi.github.io/adam-messaoudi-portfolio/" target="_blank">adam-messaoudi-portfolio</a>
+
+    <!-- Particle Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navigation Header -->
+    <nav>
+        <div class="container nav-inner">
+            <a href="#" class="brand-logo">
+                <img src="adam_messaoudi.jpg" alt="Adam Messaoudi" class="nav-avatar-mini">
+                ADAM<span>.DE</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#terminal">CLI Shell</a></li>
+                <li><a href="#architecture">Architecture Flow</a></li>
+                <li><a href="#projects">Projects (12)</a></li>
+                <li><a href="#skills">Tech Matrix</a></li>
+                <li><a href="#certifications">Certifications (20)</a></li>
+                <li><a href="#organizations">Leadership</a></li>
+                <li class="mobile-only-cta">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=adam.messaoudi67@gmail.com" target="_blank" class="nav-cta" style="display: inline-flex; width: 100%; justify-content: center; padding: 12px 20px;">
+                        <i class="fa-solid fa-paper-plane"></i> Contact Direct (Gmail)
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Interactive Theme Switcher & Mobile Toggle -->
+            <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+                <div class="theme-switcher" style="flex-shrink: 0;">
+                    <button class="theme-btn active" title="Cyberpunk Theme" onclick="setTheme('cyberpunk')"><i class="fa-solid fa-bolt"></i></button>
+                    <button class="theme-btn" title="Midnight Theme" onclick="setTheme('midnight')"><i class="fa-solid fa-moon"></i></button>
+                    <button class="theme-btn" title="Light Mode" onclick="setTheme('light')"><i class="fa-solid fa-sun"></i></button>
+                </div>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=adam.messaoudi67@gmail.com" target="_blank" class="nav-cta desktop-nav-cta" style="padding: 8px 16px; font-size: 0.82rem;">
+                    <i class="fa-solid fa-paper-plane"></i> Contact Direct
+                </a>
+                <button class="mobile-nav-toggle" onclick="toggleMobileMenu()" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars" id="menu-icon"></i>
+                </button>
             </div>
-        </header>
+        </div>
+    </nav>
 
-        <section>
-            <h2>Professional Summary</h2>
-            <p>
-                Data Engineer experienced in ETL/ELT pipelines, data modeling, Microsoft Fabric Lakehouse, Power BI dashboards, SQL, Python automation, AI-assisted development, and business intelligence solutions. Skilled in transforming complex datasets into actionable insights and building scalable analytics platforms. Currently refining German language skills (B1 level) and motivated to contribute to international data engineering environments.
-            </p>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="container">
+            <div class="hero-layout">
+                <div>
+                    <div class="cyber-badge">
+                        <span class="pulse-dot"></span> WOLFSBURG, GERMANY • DATA & BI ENGINEER
+                    </div>
+                    <h1>ADAM <span class="gradient-text">MESSAOUDI</span></h1>
+                    <div class="hero-role">
+                        <span>Role:</span> <span class="typing-text" id="typing-role">Data Engineer</span>
+                    </div>
+                    <p class="hero-bio">
+                        Master's Equivalent Computer Science Engineer specialized in enterprise ETL/ELT pipelines, Microsoft Fabric Lakehouse architectures, Power BI analytics, Next.js / Python full-stack systems, and MLOps workflows.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#terminal" class="nav-cta" style="padding: 12px 28px; font-size: 0.95rem;">
+                            <i class="fa-solid fa-terminal"></i> Launch Interactive Shell
+                        </a>
+                        <a href="#projects" class="nav-cta" style="background: transparent; border: 1px solid var(--border-line); color: var(--text-main); box-shadow: none;">
+                            <i class="fa-solid fa-code-branch"></i> View Projects (12)
+                        </a>
+                    </div>
+                </div>
 
-        <section>
-            <h2>Professional Experience</h2>
+                <!-- Profile Headshot Card -->
+                <div class="profile-card">
+                    <div class="avatar-frame">
+                        <div class="avatar-glow-ring"></div>
+                        <img src="adam_messaoudi.jpg" alt="Adam Messaoudi" class="avatar-img">
+                    </div>
+                    <h3>Adam Messaoudi</h3>
+                    <div class="profile-location">
+                        <i class="fa-solid fa-location-dot"></i> Wolfsburg, Germany
+                    </div>
+                    
+                    <div class="profile-metrics-grid">
+                        <a href="#projects" class="metric-card" title="Jump to Projects Section">
+                            <div class="metric-card-top">
+                                <span class="metric-val">12</span>
+                                <i class="fa-solid fa-laptop-code metric-icon"></i>
+                            </div>
+                            <div class="metric-label">Projects</div>
+                            <div class="metric-desc">Data & Full-Stack</div>
+                        </a>
+
+                        <a href="#certifications" class="metric-card" title="Jump to Certifications Section">
+                            <div class="metric-card-top">
+                                <span class="metric-val">20</span>
+                                <i class="fa-solid fa-certificate metric-icon"></i>
+                            </div>
+                            <div class="metric-label">Certifications</div>
+                            <div class="metric-desc">Azure, MLOps, NVIDIA</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive IT Shell / Bash Console -->
+    <section class="container terminal-section" id="terminal">
+        <div class="section-header">
+            <div class="tag-subtitle">// INTERACTIVE CONSOLE</div>
+            <h2>Adam's Data Engineering Terminal</h2>
+        </div>
+
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <span class="t-dot red"></span>
+                    <span class="t-dot yellow"></span>
+                    <span class="t-dot green"></span>
+                </div>
+                <div class="terminal-title">
+                    <i class="fa-solid fa-terminal"></i> adam@data-engine: ~ (bash - zsh)
+                </div>
+                <div style="font-size: 0.75rem; color: var(--accent);">
+                    <i class="fa-solid fa-wifi"></i> ONLINE
+                </div>
+            </div>
+
+            <!-- Executable Terminal Buttons -->
+            <div class="terminal-chips">
+                <button class="chip-btn" onclick="execCmd('whoami')">$ whoami</button>
+                <button class="chip-btn" onclick="execCmd('list-all-projects')">$ list-all-projects (12)</button>
+                <button class="chip-btn" onclick="execCmd('list-data-certs')">$ list-data-certs</button>
+                <button class="chip-btn" onclick="execCmd('tech-stack')">$ tech-stack</button>
+                <button class="chip-btn" onclick="execCmd('clear')">$ clear</button>
+            </div>
+
+            <div class="terminal-body" id="term-body">
+                <div class="t-line t-highlight">Welcome to Adam Messaoudi's Interactive Shell v2.5.0.</div>
+                <div class="t-line t-output">Type <span class="t-success">'help'</span> or click any quick command button above to inspect projects and credentials.</div>
+                <div class="t-line">&nbsp;</div>
+                <div class="t-line">
+                    <span class="t-prompt">adam@data-engine:~$</span> <span class="t-cmd">whoami</span>
+                </div>
+                <div class="t-line t-output">
+                    ✦ Name: Adam Messaoudi<br>
+                    ✦ Role: Data Engineer | Business Intelligence Engineer | Data Analyst<br>
+                    ✦ Location: Wolfsburg, Germany<br>
+                    ✦ Degree: Master's Equivalent Computer Science Engineer
+                </div>
+                <div class="t-line">&nbsp;</div>
+                <div id="term-dynamic-output"></div>
+
+                <div class="terminal-input-row">
+                    <span class="t-prompt">adam@data-engine:~$</span>
+                    <input type="text" class="terminal-input" id="term-input" placeholder="type command (e.g. help, whoami, list-all-projects, list-data-certs, tech-stack, clear)...">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Data Engineering Architecture Flow Visualizer -->
+    <section class="container" id="architecture">
+        <div class="section-header">
+            <div class="tag-subtitle">// ARCHITECTURE CANVAS</div>
+            <h2>Interactive Data Engineering Ecosystem</h2>
+        </div>
+
+        <div class="pipeline-flow-box">
+            <div class="pipeline-nodes">
+                <div class="p-node active" onclick="selectNode('ingestion')">
+                    <div class="p-node-icon"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+                    <h4>1. Data Ingestion & Scraping</h4>
+                    <div class="p-node-sub">Selenium • BeautifulSoup • Salesforce API</div>
+                </div>
+
+                <div class="p-node" onclick="selectNode('etl')">
+                    <div class="p-node-icon"><i class="fa-solid fa-gears"></i></div>
+                    <h4>2. ETL / ELT Pipelines</h4>
+                    <div class="p-node-sub">Microsoft Fabric • Dataflows Gen2 • Talend</div>
+                </div>
+
+                <div class="p-node" onclick="selectNode('storage')">
+                    <div class="p-node-icon"><i class="fa-solid fa-database"></i></div>
+                    <h4>3. Storage & Lakehouse</h4>
+                    <div class="p-node-sub">OneLake • PostgreSQL • MySQL • Delta Lake</div>
+                </div>
+
+                <div class="p-node" onclick="selectNode('analytics')">
+                    <div class="p-node-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                    <h4>4. Analytics & MLOps</h4>
+                    <div class="p-node-sub">Power BI (DAX) • MLflow • SageMaker</div>
+                </div>
+            </div>
+
+            <div class="pipeline-details" id="node-details">
+                <strong style="color: var(--primary);">✦ Layer 1: Data Ingestion & Web Scraping</strong><br>
+                Integrated enterprise APIs (Salesforce) and automated high-scale web scrapers (Selenium, BeautifulSoup) to harvest 130,000+ workshop reviews and industrial B2B catalog specifications across <strong>ZF Group</strong>, <strong>CAN 2025</strong>, and <strong>B2B Industrial E-Commerce</strong>.
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section (DATA FIRST DEMARCATED) -->
+    <section class="container" style="padding: 30px 0 90px 0;" id="projects">
+        <div class="section-header">
+            <div class="tag-subtitle">// PORTFOLIO SHOWCASE</div>
+            <h2>Featured Projects & Engineering Work (12)</h2>
+        </div>
+
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterProjects('all')">All (12)</button>
+            <button class="filter-btn" onclick="filterProjects('data')">Data Engineering & BI (Core)</button>
+            <button class="filter-btn" onclick="filterProjects('fullstack')">Full-Stack & Scraping</button>
+            <button class="filter-btn" onclick="filterProjects('academic')">Software & Systems</button>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
             
-            <div class="item-header">
-                <span>ZF Group</span>
-                <span>03/2025 – 09/2025</span>
-            </div>
-            <div class="item-sub">
-                <span>End-of-Studies Data Engineering Intern</span>
-                <span>Hanover, Germany</span>
-            </div>
-            <div class="project-title">Project: Digital Monitoring Solution for ZF Global Workshop Network</div>
-            <ul>
-                <li>Architected and deployed scalable ETL/ELT pipelines using Microsoft Fabric and Salesforce, integrating 130,000+ records into a centralized Lakehouse environment.</li>
-                <li>Constructed an enterprise Microsoft Fabric solution leveraging OneLake, Dataflows Gen2, and Semantic Models to automate end-to-end data transformation workflows.</li>
-                <li>Engineered 5 interactive Power BI dashboards with standardized DAX measures, enabling self-service analytics for 4,600+ workshops in the global network.</li>
-                <li>Automated Google Maps review data collection using Python and Selenium across 4,600+ workshops, enriching business analytics with clean sentiment data.</li>
-                <li>Formulated an MLOps forecasting pipeline with MLflow tracking, streamlining model retraining and predictive performance analysis.</li>
-                <li class="tech-stack"><strong>Technologies:</strong> Microsoft Power BI, Microsoft Fabric (OneLake, Dataflows Gen2), Python (Selenium, Pandas), MLOps, Excel.</li>
-            </ul>
-
-            <div class="item-header">
-                <span>Infraway Tunisia</span>
-                <span>06/2024 – 09/2024</span>
-            </div>
-            <div class="item-sub">
-                <span>Data Engineering Intern</span>
-                <span>Tunis, Tunisia</span>
-            </div>
-            <div class="project-title">Project: Telecom Management Optimization Through Data-Driven Insights</div>
-            <ul>
-                <li>Analyzed 10.01M+ telecommunications call records across 43 attributes via EDA to uncover key network traffic trends.</li>
-                <li>Streamlined ETL workflows by building automated Talend staging jobs, reducing data processing time by 45% and enabling daily dashboard refreshes.</li>
-                <li>Designed 2 Power BI dashboards (Service Quality & Profitability) for Sales Managers and Service Operators, optimizing 63 B2B accounts.</li>
-                <li>Trained Exponential Smoothing forecasting models in Python (Pandas, Statsmodels) to predict monthly call volumes and support capacity planning.</li>
-                <li class="tech-stack"><strong>Technologies:</strong> MySQL, Talend, Power BI, Python, Machine Learning (Statsmodels, Scikit-Learn), SQL.</li>
-            </ul>
-
-            <div class="item-header">
-                <span>PGS International</span>
-                <span>06/2023 – 09/2023</span>
-            </div>
-            <div class="item-sub">
-                <span>Business Intelligence Intern</span>
-                <span>Ben Arous, Tunisia</span>
-            </div>
-            <div class="project-title">Project: Data-Driven Inventory Optimization Platform for Oil Depots</div>
-            <ul>
-                <li>Centralized oil depot inventory data across 5 depot locations into a PostgreSQL data warehouse using automated Talend ETL workflows.</li>
-                <li>Visualized real-time stock levels and 10+ operational KPIs across 3 Power BI dashboards to track inventory performance.</li>
-                <li>Orchestrated Python web scrapers (Selenium, BeautifulSoup) parsing market data across 4 target industry sources daily to enrich analytics.</li>
-                <li>Optimized 10+ backend REST API routes of a Flask analytics platform to support data-driven inventory management.</li>
-                <li class="tech-stack"><strong>Technologies:</strong> Talend, PostgreSQL, Power BI, Python, Angular, Flask, Machine Learning, Web Scraping (Selenium, BeautifulSoup).</li>
-            </ul>
-
-            <div class="item-header">
-                <span>Orange Tunisia</span>
-                <span>06/2022 – 09/2022</span>
-            </div>
-            <div class="item-sub">
-                <span>Data Analyst Intern</span>
-                <span>Tunis, Tunisia</span>
-            </div>
-            <div class="project-title">Project: Sales Performance Tracking Application</div>
-            <ul>
-                <li>Pioneered an interactive Power BI sales tracking dashboard to monitor monthly customer sales performance across key revenue indicators.</li>
-                <li>Processed unstructured JSON sales logs using Python and MongoDB, automating data cleaning pipelines for 5 core product lines.</li>
-                <li>Refined MongoDB query aggregations and Power BI data models to accelerate dashboard refresh times and enable real-time insights.</li>
-                <li>Delivered 10+ weekly analytical sales reports, empowering commercial leads to optimize revenue forecasting.</li>
-                <li class="tech-stack"><strong>Technologies:</strong> Power BI, Python, MongoDB, Data Visualization, MongoDB Aggregation.</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Technical Skills</h2>
-            <ul class="skills-list">
-                <li><strong>Data Engineering & BI:</strong> Microsoft Fabric (OneLake, Lakehouse, Dataflows Gen2, Pipelines, Semantic Models), Power BI (Service, Power Query, DAX), ETL/ELT, Data Pipelines, Data Governance, Data Warehousing, Data Modeling, Dimensional Modeling, Data Integration, Data Architecture, Data Quality, Data Validation, Data Orchestration, KPI Reporting.</li>
-                <li><strong>Machine Learning & Analytics:</strong> Machine Learning, Statistical Analysis, Predictive Modeling, Time Series Forecasting, MLOps, Microsoft Azure (Azure Storage, Azure SQL), Salesforce, Microsoft Dynamics 365, Azure Entra ID, SAP.</li>
-                <li><strong>Generative AI & AI Tools:</strong> Microsoft Fabric Copilot, Power BI Copilot, Azure OpenAI, GitHub Copilot, AI-assisted Development, Text-to-SQL.</li>
-                <li><strong>Databases & Formats:</strong> PostgreSQL, MySQL, Microsoft SQL Server (SSIS, SSMS, SSRS), MongoDB, SQL, CSV, JSON, YAML.</li>
-                <li><strong>Programming & Tools:</strong> Python (Pandas, Flask), Git, GitHub, Docker, Jenkins, CI/CD, Linux, REST API Integration, OAuth, Excel.</li>
-                <li><strong>Data Collection & Automation:</strong> Web Scraping (Selenium, BeautifulSoup), Data Extraction, Data Cleaning, Data Enrichment, Workflow Automation.</li>
-                <li><strong>Methodologies:</strong> Agile/Scrum, Requirements Analysis, KPI Development.</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Education</h2>
-            <div class="item-header">
-                <span>ESPRIT School of Engineering – Tunisia</span>
-                <span>Graduated: 10/2025</span>
-            </div>
-            <div class="item-sub">
-                <span>Engineering Degree in Computer Science (Master’s Equivalent)</span>
-                <span></span>
+            <!-- VISUAL CATEGORY BANNER 1: DATA PROJECTS FIRST -->
+            <div class="grid-category-header">
+                <i class="fa-solid fa-database"></i> 1. CORE DATA ENGINEERING, BI & MLOPS PROJECTS (TOP PRIORITIES)
             </div>
 
-            <div class="item-header" style="margin-top: 2px;">
-                <span>Schmalkalden University of Applied Sciences – Germany</span>
-                <span>10/2024 – 09/2025</span>
-            </div>
-            <div class="item-sub">
-                <span>Exchange Program in Computer Science</span>
-                <span></span>
+            <!-- 1. ZF Group -->
+            <div class="p-card" data-category="data">
+                <div>
+                    <div class="p-header">
+                        <span class="cat-tag tag-data">Data Engineering</span>
+                        <span class="p-date">03/2025 – 09/2025</span>
+                    </div>
+                    <h3>ZF Group — Digital Monitoring Solution</h3>
+                    <p class="p-desc">Digital monitoring analytics platform for ZF Global Workshop Network integrating 130,000+ records into a centralized Lakehouse environment.</p>
+                    <ul class="p-bullets">
+                        <li>Architected ETL/ELT pipelines using Microsoft Fabric and Salesforce.</li>
+                        <li>Built OneLake Dataflows Gen2 & Semantic Models for self-service BI.</li>
+                        <li>Developed 5 interactive Power BI dashboards for global performance.</li>
+                        <li>Automated Google Maps review scraping for 4,600+ workshops via Selenium.</li>
+                        <li>Implemented MLOps-based forecasting pipeline for predictive analytics.</li>
+                    </ul>
+                </div>
+                <div class="tech-row">
+                    <span class="tech-tag">Microsoft Fabric</span>
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Python (Selenium)</span>
+                    <span class="tech-tag">MLOps</span>
+                </div>
             </div>
 
-            <div class="item-header" style="margin-top: 2px;">
-                <span>Borj Cedria High School – Tunisia</span>
-                <span>08/2020</span>
+            <!-- 2. Infraway Tunisia -->
+            <div class="p-card" data-category="data">
+                <div>
+                    <div class="p-header">
+                        <span class="cat-tag tag-data">Data Engineering</span>
+                        <span class="p-date">06/2024 – 09/2024</span>
+                    </div>
+                    <h3>Infraway Tunisia — Telecom Management Optimization</h3>
+                    <p class="p-desc">Data warehouse and operational analytics solution for telecommunications service optimization and cost reduction.</p>
+                    <ul class="p-bullets">
+                        <li>Analyzed 10.01M+ call records across 43 attributes via EDA to uncover traffic trends.</li>
+                        <li>Streamlined ETL workflows by building automated Talend staging jobs, reducing processing time by 45%.</li>
+                        <li>Designed 2 Power BI dashboards (Service Quality & Profitability) for Sales Managers and Service Operators across 63 B2B accounts.</li>
+                        <li>Trained Exponential Smoothing forecasting models in Python (Statsmodels) for monthly call predictions.</li>
+                    </ul>
+                </div>
+                <div class="tech-row">
+                    <span class="tech-tag">Talend</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Python ML</span>
+                </div>
             </div>
-            <div class="item-sub">
-                <span>Baccalaureate in Experimental Sciences</span>
-                <span></span>
-            </div>
-        </section>
 
-        <section>
-            <h2>Certifications</h2>
-            <div class="item-header" style="font-weight: normal; margin-top: 2px;">
-                <span><a class="cert-link" href="https://www.coursera.org/account/accomplishments/certificate/EMVTWI6WTPAG" target="_blank"><strong>SAP Solution Implementation</strong> – SAP | Coursera</a></span>
-                <span style="font-weight: 700; color: #000;">11/2024</span>
+            <!-- 3. PGS International -->
+            <div class="p-card" data-category="data">
+                <div>
+                    <div class="p-header">
+                        <span class="cat-tag tag-data">BI & Analytics</span>
+                        <span class="p-date">06/2023 – 09/2023</span>
+                    </div>
+                    <h3>PGS International — Oil Depots Inventory Platform</h3>
+                    <p class="p-desc">ETL pipeline and inventory optimization platform for oil depots to automate reporting accuracy.</p>
+                    <ul class="p-bullets">
+                        <li>Centralized oil depot inventory data across 5 depot locations into a PostgreSQL warehouse using Talend ETL.</li>
+                        <li>Visualized real-time stock levels and 10+ operational KPIs across 3 Power BI dashboards to track performance.</li>
+                        <li>Orchestrated Python web scrapers (Selenium, BeautifulSoup) parsing market data across 4 target industry sources daily.</li>
+                        <li>Optimized 10+ backend REST API routes of a Flask analytics platform to support executive decision-making.</li>
+                    </ul>
+                </div>
+                <div class="tech-row">
+                    <span class="tech-tag">Talend</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Flask API</span>
+                    <span class="tech-tag">Selenium</span>
+                </div>
             </div>
-            <div class="item-header" style="font-weight: normal; margin-top: 2px;">
-                <span><a class="cert-link" href="https://www.coursera.org/account/accomplishments/certificate/UNUXC3XIV3NC" target="_blank"><strong>Microsoft Azure Cloud Services</strong> – Microsoft | Coursera</a></span>
-                <span style="font-weight: 700; color: #000;">10/2024</span>
-            </div>
-            <div class="item-header" style="font-weight: normal; margin-top: 2px;">
-                <span><a class="cert-link" href="https://www.coursera.org/account/accomplishments/specialization/certificate/3VMNKB5MDXIH" target="_blank"><strong>MLOps (Machine Learning Operations)</strong> – Duke University | Coursera</a></span>
-                <span style="font-weight: 700; color: #000;">10/2024</span>
-            </div>
-            <div class="item-header" style="font-weight: normal; margin-top: 2px;">
-                <span><a class="cert-link" href="https://www.coursera.org/account/accomplishments/certificate/59DWLMS1NOXW" target="_blank"><strong>Talend Data Integration</strong> – Talend | Coursera</a></span>
-                <span style="font-weight: 700; color: #000;">10/2024</span>
-            </div>
-        </section>
 
-        <section>
-            <h2>Languages</h2>
-            <p>
-                <strong>German:</strong> B1 (In Progress) &nbsp;|&nbsp; 
-                <strong>English:</strong> Fluent &nbsp;|&nbsp; 
-                <strong>French:</strong> Fluent &nbsp;|&nbsp; 
-                <strong>Arabic:</strong> Native &nbsp;|&nbsp; 
-                <strong>Spanish:</strong> Elementary
-            </p>
-        </section>
-    </div>
+            <!-- 4. Orange Tunisia -->
+            <div class="p-card" data-category="data">
+                <div>
+                    <div class="p-header">
+                        <span class="cat-tag tag-data">Data Analytics</span>
+                        <span class="p-date">06/2022 – 09/2022</span>
+                    </div>
+                    <h3>Orange Tunisia — Sales Tracking Application</h3>
+                    <p class="p-desc">Interactive sales performance tracking dashboard to monitor revenue KPIs and commercial trends.</p>
+                    <ul class="p-bullets">
+                        <li>Pioneered an interactive Power BI sales tracking dashboard to monitor monthly customer sales performance across key KPIs.</li>
+                        <li>Processed unstructured JSON sales logs using Python and MongoDB, automating data cleaning pipelines for 5 core product lines.</li>
+                        <li>Refined MongoDB query aggregations and Power BI data models to accelerate dashboard refresh times.</li>
+                        <li>Delivered 10+ weekly analytical sales reports, empowering commercial leads to optimize revenue forecasting.</li>
+                    </ul>
+                </div>
+                <div class="tech-row">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Data Analytics</span>
+                </div>
+            </div>
+
+            <!-- 5. CAN 2025 Analytics -->
+            <div class="p-card" data-category="data">
+                <div>
+                    <div class="p-header">
+                        <span class="cat-tag tag-data">Data Analytics</span>
+                        <span class="p-date">12/2025 – 01/2026</span>
+                    </div>
+                    <h3>CAN 2025 Morocco — Hidden Talent Discovery</h3>
+                    <p class="p-desc">Data analytics and web scraping pipeline to uncover non-mediatised African football talents using advanced performance scoring models.</p>
+                    <ul class="p-bullets">
+                        <li>Engineered Selenium web scraping pipeline to extract match statistics.</li>
+                        <li>Structured datasets to evaluate non-mediatised players based on KPIs.</li>
+                        <li>Built interactive Power BI dashboards for comparative player scoring.</li>
+                    </ul>
+                </div>
+                <div class="tech-row">
+                    <span class="tech-tag">Python (Selenium)</span>
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Scoring Models</span>
+                </div>
+            </div>
+
+            <!-- VISUAL CATEGORY BANNER 2: FULL-STACK & SYSTEMS -->
+            <div class="grid-category-header secondary">
+                <i class="fa-solid fa-code"></i> 2. FULL-STACK, SCRAPING & SOFTWARE SYSTEMS PROJECTS
+            </div>
+
+            <!-- 6. B2B E-Commerce & Chrome Extensions Pipeline -->
+            <div class="p-card" data-category="fullstack">
+                <div>
+                    <div class="p-header">
+                        <span class="cat-tag tag-fullstack">Full-Stack & Scraping</span>
+                        <span class="p-date">04/2026 – 06/2026</span>
+                    </div>
+                    <h3>B2B E-Commerce & Industrial Data Pipeline</h3>
+                    <p class="p-desc">Industrial product catalog & e-commerce platform for NDT equipment powered by custom Manifest V3 Chrome Extensions and Node.js ETL pipeline.</p>
+                    <ul class="p-bullets">
+                        <li>Built Manifest V3 Chrome Extensions to parse supplier DOMs & export JSON data.</li>
+                        <li>Implemented Node.js pipeline: extraction, cleaning, media hosting & MySQL sync.</li>
+                        <li>Developed Next.js / React / Tailwind UI with raw MySQL2 driver queries.</li>
+                        <li>Integrated Request-for-Quotation (RFQ) & automated brochure generator.</li>
+                    </ul>
+                </div>
+                <div class="tech-row">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">Chrome Extension V3</span>
+                    <span class="tech-tag">MySQL2</span>
+                    <span class="tech-tag">Node.js ETL</span>
+                </div>
+            </div>
+
+            <!-- 7. Talent Matching Platform -->
+            <div class="p-card" data-category="fullstack">
+                <div>
+                    <div class="p-header">
+                        <span class="cat-tag tag-fullstack">Full-Stack & ML</span>
+                        <span class="p-date">02/2026 – 03/2026</span>
+                    </div>
+                    <h3>Intelligent Talent Matching Platform</h3>
+                    <p class="p-desc">Full-stack scouting platform connecting players, coaches, agents, and scouts using data-driven preference matching logic.</p>
+                    <ul class="p-bullets">
+                        <li>Built Flask + Python backend for intelligent criteria matching logic.</li>
+                        <li>Developed performance dashboards & video portfolio visualization.</li>
+                        <li>Structured backend data models for scalable profile discovery.</li>
+                    </ul>
+                </div>
+                <div class="tech-row">
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Data Matching</span>
+                    <span class="tech-tag">Analytics</span>
+                </div>
+            </div>
+
+            <!-- 8. FTF Digital Portal Redesign -->
+            <div class="p-card" data-category="fullstack">
+                <div>
+                    <div class="p-header">
+                        <span class="cat-tag tag-fullstack">Full-Stack Web</span>
+                        <span class="p-date">07/2026 – Present</span>
+                    </div>
+                    <h3>Tunisian Football Federation (FTF) Digital Portal</h3>
+                    <p class="p-desc">High-performance SPA web portal redesign featuring custom SVG stadium ticketing and live match analytics hub.</p>
+                    <ul class="p-bullets">
+                        <li>Built interactive SVG stadium ticketing for Stade de Radès seat selection.</li>
+                        <li>Created 3D jersey showcase visualizer with spotlight flip animations.</li>
+                        <li>Built live match center dashboard with historical results & statistics.</li>
+                    </ul>
+                </div>
+                <div class="tech-row">
+                    <span class="tech-tag">React.js</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Vite</span>
+                    <span class="tech-tag">Lucide React</span>
+                </div>
+            </div>
+
+            <!-- 9. SecurAssur (ESPRIT) -->
+            <div class="p-card" data-category="academic">
+                <div>
+                    <div class="p-header">
+                        <span class="cat-tag tag-academic">Software Systems</span>
+                        <span class="p-date">02/2023 – 05/2023</span>
+                    </div>
+                    <h3>SecurAssur — Cross-Platform Insurance Ecosystem</h3>
+                    <p class="p-desc">Integrated web, mobile, and desktop ecosystem for insurance claims and after-sales management.</p>
+                    <ul class="p-bullets">
+                        <li>Developed backend claims logic with Symfony Framework & UML design.</li>
+                        <li>Seamless database integration for cross-platform data syncing.</li>
+                    </ul>
+                </div>
+                <div class="tech-row">
+                    <span class="tech-tag">Symfony</span>
+                    <span class="tech-tag">UML</span>
+                    <span class="tech-tag">MySQL</span>
+                </div>
+            </div>
+
+            <!-- 10. Douc'Heure Beauty Center Platform -->
+            <div class="p-card" data-category="fullstack">
+                <div>
+                    <div class="p-header">
+                        <span class="cat-tag tag-fullstack">Full-Stack E-Commerce</span>
+                        <span class="p-date">02/2022 – 04/2022</span>
+                    </div>
+                    <h3>Douc’Heure — Beauty Center E-Commerce Platform</h3>
+                    <p class="p-desc">Full-stack web platform for beauty centers featuring online store, streamlined inventory management, and buyer-seller portal.</p>
+                    <ul class="p-bullets">
+                        <li>Developed e-commerce catalog & inventory management backend in PHP.</li>
+                        <li>Designed user-friendly interface for appointment & product booking.</li>
+                    </ul>
+                </div>
+                <div class="tech-row">
+                    <span class="tech-tag">PHP</span>
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">Inventory Management</span>
+                </div>
+            </div>
+
+            <!-- 11. Olympic Games Management -->
+            <div class="p-card" data-category="academic">
+                <div>
+                    <div class="p-header">
+                        <span class="cat-tag tag-academic">Software Systems</span>
+                        <span class="p-date">10/2021 – 12/2021</span>
+                    </div>
+                    <h3>Olympic Games Management & C++ Arduino System</h3>
+                    <p class="p-desc">Desktop stadium management application connected to an Arduino security barrier in C++ and Oracle SQL.</p>
+                    <ul class="p-bullets">
+                        <li>Programmed C++ Arduino scenario for stadium ticket validation barrier.</li>
+                        <li>Built Oracle SQL database integration for ticketholder subscriptions.</li>
+                    </ul>
+                </div>
+                <div class="tech-row">
+                    <span class="tech-tag">C++</span>
+                    <span class="tech-tag">Arduino</span>
+                    <span class="tech-tag">Oracle SQL</span>
+                </div>
+            </div>
+
+            <!-- 12. 2D Game Development -->
+            <div class="p-card" data-category="academic">
+                <div>
+                    <div class="p-header">
+                        <span class="cat-tag tag-academic">Game Engineering</span>
+                        <span class="p-date">02/2021 – 04/2021</span>
+                    </div>
+                    <h3>2D Game Engine Development in C</h3>
+                    <p class="p-desc">Developed a 2D game engine featuring intricate levels, custom characters, collision physics, and engaging puzzles.</p>
+                    <ul class="p-bullets">
+                        <li>Engineered level design, game physics, and character controls in C.</li>
+                        <li>Created visual assets and sprite animations in Adobe Photoshop.</li>
+                    </ul>
+                </div>
+                <div class="tech-row">
+                    <span class="tech-tag">C (Language)</span>
+                    <span class="tech-tag">Adobe Photoshop</span>
+                    <span class="tech-tag">Game Design</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills Matrix -->
+    <section class="skills-section container" id="skills">
+        <div class="section-header">
+            <div class="tag-subtitle">// TECH STACK</div>
+            <h2>Technical Skills Matrix</h2>
+        </div>
+
+        <div class="skills-matrix">
+            <div class="matrix-box">
+                <h3><i class="fa-solid fa-server"></i> Data Engineering & BI</h3>
+                <div class="matrix-badges">
+                    <span class="m-badge">Microsoft Fabric (OneLake, Dataflows Gen2)</span>
+                    <span class="m-badge">Power BI (DAX, Power Query)</span>
+                    <span class="m-badge">ETL / ELT Pipelines & Staging</span>
+                    <span class="m-badge">Talend Data Integration</span>
+                    <span class="m-badge">Data Orchestration & Validation</span>
+                    <span class="m-badge">Data Warehousing & Dimensional Models</span>
+                    <span class="m-badge">Data Governance & Quality</span>
+                    <span class="m-badge">Salesforce ETL Integration</span>
+                </div>
+            </div>
+
+            <div class="matrix-box">
+                <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Generative AI & AI Tools</h3>
+                <div class="matrix-badges">
+                    <span class="m-badge">Microsoft Fabric Copilot</span>
+                    <span class="m-badge">Power BI Copilot</span>
+                    <span class="m-badge">Azure OpenAI</span>
+                    <span class="m-badge">GitHub Copilot</span>
+                    <span class="m-badge">AI-assisted Development</span>
+                    <span class="m-badge">Text-to-SQL</span>
+                    <span class="m-badge">Statistical Analysis</span>
+                </div>
+            </div>
+
+            <div class="matrix-box">
+                <h3><i class="fa-solid fa-spider"></i> Web Scraping & Automation</h3>
+                <div class="matrix-badges">
+                    <span class="m-badge">Selenium Web Scraping</span>
+                    <span class="m-badge">BeautifulSoup</span>
+                    <span class="m-badge">DOM Parsing Pipelines</span>
+                    <span class="m-badge">Chrome Extensions (Manifest V3)</span>
+                    <span class="m-badge">Node.js Automated Extractors</span>
+                    <span class="m-badge">REST API Integration & OAuth</span>
+                </div>
+            </div>
+
+            <div class="matrix-box">
+                <h3><i class="fa-solid fa-database"></i> Databases & Cloud</h3>
+                <div class="matrix-badges">
+                    <span class="m-badge">PostgreSQL</span>
+                    <span class="m-badge">MySQL & MySQL2 Driver</span>
+                    <span class="m-badge">MS SQL Server</span>
+                    <span class="m-badge">MongoDB</span>
+                    <span class="m-badge">Oracle SQL</span>
+                    <span class="m-badge">Microsoft Azure Services</span>
+                </div>
+            </div>
+
+            <div class="matrix-box">
+                <h3><i class="fa-solid fa-code"></i> Programming Languages</h3>
+                <div class="matrix-badges">
+                    <span class="m-badge">Python (Pandas, Scikit-Learn, Flask)</span>
+                    <span class="m-badge">React.js & Next.js (TypeScript)</span>
+                    <span class="m-badge">PHP & Symfony</span>
+                    <span class="m-badge">C / C++ System Programming</span>
+                    <span class="m-badge">SQL (DAX, Power Query)</span>
+                </div>
+            </div>
+
+            <div class="matrix-box">
+                <h3><i class="fa-solid fa-language"></i> Spoken Languages</h3>
+                <div class="matrix-badges">
+                    <span class="m-badge" style="border-color: var(--primary); font-weight: 700;">🇩🇪 German (B1 - In Progress)</span>
+                    <span class="m-badge" style="border-color: var(--accent); font-weight: 700;">🇬🇧 English (Fluent)</span>
+                    <span class="m-badge" style="border-color: var(--accent); font-weight: 700;">🇫🇷 French (Fluent)</span>
+                    <span class="m-badge" style="border-color: var(--primary); font-weight: 700;">🇹🇳 Arabic (Native)</span>
+                    <span class="m-badge">🇪🇸 Spanish (Elementary)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Hub (DATA FIRST DEMARCATED) -->
+    <section class="certs-section container" id="certifications" style="padding: 90px 0;">
+        <div class="section-header">
+            <div class="tag-subtitle">// CREDENTIALS HUB</div>
+            <h2>Verified Licenses & Certifications (20)</h2>
+        </div>
+
+        <div class="cert-cards-grid">
+            
+            <!-- VISUAL CATEGORY BANNER 1: DATA & MLOPS CERTIFICATIONS FIRST -->
+            <div class="grid-category-header">
+                <i class="fa-solid fa-certificate"></i> 1. DATA ENGINEERING, MLOPS, AI & CLOUD CERTIFICATIONS (FIRST 15)
+            </div>
+
+            <!-- 1. Duke MLOps Specialization -->
+            <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/3VMNKB5MDXIH" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: #b57cff;"><i class="fa-solid fa-microchip"></i></div>
+                    <span class="cert-badge-tag">Duke Univ</span>
+                </div>
+                <h4>MLOps | Machine Learning Operations Specialization</h4>
+                <div class="cert-org">Duke University | Coursera (10/2024)</div>
+                <div class="cert-id">ID: 3VMNKB5MDXIH</div>
+            </a>
+
+            <!-- 2. SAP -->
+            <a href="https://www.coursera.org/account/accomplishments/certificate/EMVTWI6WTPAG" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box"><i class="fa-solid fa-certificate"></i></div>
+                    <span class="cert-badge-tag">SAP</span>
+                </div>
+                <h4>Implementing an SAP Solution</h4>
+                <div class="cert-org">SAP | Coursera (11/2024)</div>
+                <div class="cert-id">ID: EMVTWI6WTPAG</div>
+            </a>
+
+            <!-- 3. NVIDIA NLP -->
+            <a href="https://learn.nvidia.com/certificates?id=G8x77fACQnOz0AWMEW-Vgw" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: #76b900;"><i class="fa-solid fa-brain"></i></div>
+                    <span class="cert-badge-tag">NVIDIA</span>
+                </div>
+                <h4>Building Transformer-Based NLP Applications</h4>
+                <div class="cert-org">NVIDIA Deep Learning Institute (11/2024)</div>
+                <div class="cert-id">ID: pF329a7-SwSyOeTLS-WONQ</div>
+            </a>
+
+            <!-- 4. NVIDIA Anomaly -->
+            <a href="https://learn.nvidia.com/certificates?id=iWbgSSUnQKaOan8OPsj0Dg#" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: #76b900;"><i class="fa-solid fa-shield-halved"></i></div>
+                    <span class="cert-badge-tag">NVIDIA</span>
+                </div>
+                <h4>Applications of AI for Anomaly Detection</h4>
+                <div class="cert-org">NVIDIA Deep Learning Institute (10/2024)</div>
+                <div class="cert-id">ID: tsySqX7jSfWy5q22OMI6hw</div>
+            </a>
+
+            <!-- 5. Talend -->
+            <a href="https://www.coursera.org/account/accomplishments/certificate/59DWLMS1NOXW" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: var(--accent);"><i class="fa-solid fa-diagram-project"></i></div>
+                    <span class="cert-badge-tag">Talend</span>
+                </div>
+                <h4>Talend Data Integration Certification Prep</h4>
+                <div class="cert-org">Talend | Coursera (10/2024)</div>
+                <div class="cert-id">ID: 59DWLMS1NOXW</div>
+            </a>
+
+            <!-- 6. Duke MLflow -->
+            <a href="https://www.coursera.org/account/accomplishments/certificate/BJM8VFE4SUY7" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: #b57cff;"><i class="fa-solid fa-gear"></i></div>
+                    <span class="cert-badge-tag">Duke Univ</span>
+                </div>
+                <h4>MLOps Tools: MLflow and Hugging Face</h4>
+                <div class="cert-org">Duke University | Coursera (10/2024)</div>
+                <div class="cert-id">ID: BJM8VFE4SUY7</div>
+            </a>
+
+            <!-- 7. Duke SageMaker & Azure ML -->
+            <a href="https://www.coursera.org/account/accomplishments/certificate/JP1K8KBZ8G1P" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: #b57cff;"><i class="fa-solid fa-cubes"></i></div>
+                    <span class="cert-badge-tag">Duke Univ</span>
+                </div>
+                <h4>MLOps Platforms: SageMaker & Azure ML</h4>
+                <div class="cert-org">Duke University | Coursera (10/2024)</div>
+                <div class="cert-id">ID: JP1K8KBZ8G1P</div>
+            </a>
+
+            <!-- 8. Duke DevOps, DataOps, MLOps -->
+            <a href="https://www.coursera.org/account/accomplishments/certificate/5W3VYSM1CXXA" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: #b57cff;"><i class="fa-solid fa-code-merge"></i></div>
+                    <span class="cert-badge-tag">Duke Univ</span>
+                </div>
+                <h4>DevOps, DataOps, MLOps</h4>
+                <div class="cert-org">Duke University | Coursera (10/2024)</div>
+                <div class="cert-id">ID: 5W3VYSM1CXXA</div>
+            </a>
+
+            <!-- 9. Duke Python MLOps -->
+            <a href="https://www.coursera.org/account/accomplishments/certificate/65EOMYN9TNAG" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: #b57cff;"><i class="fa-brands fa-python"></i></div>
+                    <span class="cert-badge-tag">Duke Univ</span>
+                </div>
+                <h4>Python Essentials for MLOps</h4>
+                <div class="cert-org">Duke University | Coursera (10/2024)</div>
+                <div class="cert-id">ID: 65EOMYN9TNAG</div>
+            </a>
+
+            <!-- 10. Azure AZ-900 Prep -->
+            <a href="https://www.coursera.org/account/accomplishments/certificate/V8A8XU4RSP2S" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: var(--primary);"><i class="fa-brands fa-microsoft"></i></div>
+                    <span class="cert-badge-tag">Microsoft</span>
+                </div>
+                <h4>AZ-900 Microsoft Azure Fundamentals Prep</h4>
+                <div class="cert-org">Microsoft | Coursera (10/2024)</div>
+                <div class="cert-id">ID: V8A8XU4RSP2S</div>
+            </a>
+
+            <!-- 11. Azure Security -->
+            <a href="https://www.coursera.org/account/accomplishments/certificate/IFTHQIYPQK4G" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: var(--primary);"><i class="fa-brands fa-microsoft"></i></div>
+                    <span class="cert-badge-tag">Microsoft</span>
+                </div>
+                <h4>Microsoft Azure Management & Security</h4>
+                <div class="cert-org">Microsoft | Coursera (10/2024)</div>
+                <div class="cert-id">ID: IFTHQIYPQK4G</div>
+            </a>
+
+            <!-- 12. Azure Lifecycles -->
+            <a href="https://www.coursera.org/account/accomplishments/certificate/56DRLY1KXVFO" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: var(--primary);"><i class="fa-brands fa-microsoft"></i></div>
+                    <span class="cert-badge-tag">Microsoft</span>
+                </div>
+                <h4>Microsoft Azure Services and Lifecycles</h4>
+                <div class="cert-org">Microsoft | Coursera (10/2024)</div>
+                <div class="cert-id">ID: 56DRLY1KXVFO</div>
+            </a>
+
+            <!-- 13. Azure Intro -->
+            <a href="https://www.coursera.org/account/accomplishments/certificate/UNUXC3XIV3NC" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: var(--primary);"><i class="fa-brands fa-microsoft"></i></div>
+                    <span class="cert-badge-tag">Microsoft</span>
+                </div>
+                <h4>Introduction to Azure Cloud Services</h4>
+                <div class="cert-org">Microsoft | Coursera (10/2024)</div>
+                <div class="cert-id">ID: UNUXC3XIV3NC</div>
+            </a>
+
+            <!-- 14. HackerRank Python -->
+            <a href="https://www.hackerrank.com/certificates/a0ed99696e88" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: var(--accent);"><i class="fa-brands fa-python"></i></div>
+                    <span class="cert-badge-tag">HackerRank</span>
+                </div>
+                <h4>Python (Basic) Certification</h4>
+                <div class="cert-org">HackerRank (06/2024)</div>
+            </a>
+
+            <!-- 15. HackerRank R -->
+            <a href="https://www.hackerrank.com/certificates/c3d641c1830a" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: var(--accent);"><i class="fa-solid fa-chart-simple"></i></div>
+                    <span class="cert-badge-tag">HackerRank</span>
+                </div>
+                <h4>R (Basic) Certification</h4>
+                <div class="cert-org">HackerRank (06/2024)</div>
+            </a>
+
+            <!-- VISUAL CATEGORY BANNER 2: OTHER CERTIFICATIONS -->
+            <div class="grid-category-header secondary">
+                <i class="fa-solid fa-award"></i> 2. ADDITIONAL BUSINESS, CRM & LOGIC CERTIFICATIONS
+            </div>
+
+            <!-- 16. Honoris Sustainability -->
+            <a href="https://certificate.bcdiploma.com/check/196227F77FD242621CF21BD0765C4999C5C40A2952146869C756A97B7CD9E67ETkJROHNpQ1dkL05jTllYWkl5ODR4VURWME1zbkZBRXVPYk5TbjRjR0plVzNBNHBn" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: #f59e0b;"><i class="fa-solid fa-leaf"></i></div>
+                    <span class="cert-badge-tag">Honoris</span>
+                </div>
+                <h4>Honoris Sustainability, Work Ethics & Gender Equity</h4>
+                <div class="cert-org">Honoris United Universities (12/2024)</div>
+            </a>
+
+            <!-- 17. HubSpot Ticketing System -->
+            <a href="https://www.coursera.org/account/accomplishments/certificate/6S692G79YRVU" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: #ff7a59;"><i class="fa-solid fa-ticket"></i></div>
+                    <span class="cert-badge-tag">HubSpot</span>
+                </div>
+                <h4>HubSpot: Working with a Ticketing System</h4>
+                <div class="cert-org">HubSpot | Coursera (05/2024)</div>
+                <div class="cert-id">ID: 6S692G79YRVU</div>
+            </a>
+
+            <!-- 18. HubSpot Intro to CRM -->
+            <a href="https://www.coursera.org/account/accomplishments/certificate/P26DRQT94374" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: #ff7a59;"><i class="fa-solid fa-users-gear"></i></div>
+                    <span class="cert-badge-tag">HubSpot</span>
+                </div>
+                <h4>Introduction to CRM with HubSpot</h4>
+                <div class="cert-org">HubSpot | Coursera (05/2024)</div>
+                <div class="cert-id">ID: P26DRQT94374</div>
+            </a>
+
+            <!-- 19. Get Started with HubSpot -->
+            <a href="https://www.coursera.org/account/accomplishments/certificate/CZ5AFT26MXZQ" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: #ff7a59;"><i class="fa-solid fa-bullhorn"></i></div>
+                    <span class="cert-badge-tag">HubSpot</span>
+                </div>
+                <h4>Get Started with HubSpot</h4>
+                <div class="cert-org">HubSpot | Coursera (05/2024)</div>
+                <div class="cert-id">ID: CZ5AFT26MXZQ</div>
+            </a>
+
+            <!-- 20. HackerRank Problem Solving -->
+            <a href="https://www.hackerrank.com/certificates/7d72cfa11a78" target="_blank" class="holo-card">
+                <div class="cert-head">
+                    <div class="cert-icon-box" style="color: var(--accent);"><i class="fa-solid fa-puzzle-piece"></i></div>
+                    <span class="cert-badge-tag">HackerRank</span>
+                </div>
+                <h4>Problem Solving (Basic) Certification</h4>
+                <div class="cert-org">HackerRank (07/2024)</div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="container" style="padding: 70px 0;" id="organizations">
+        <div class="section-header">
+            <div class="tag-subtitle">// ENGAGEMENT</div>
+            <h2>Leadership & Organizations</h2>
+        </div>
+
+        <div class="org-grid">
+            <div class="org-card">
+                <h4>IEEE ESPRIT Student Branch</h4>
+                <div class="org-role"><i class="fa-solid fa-users"></i> Member (09/2022 – 12/2023)</div>
+                <div class="org-desc">Active contributor within Computer Society, Robotics & Automation Society, and Humanitarian Technology SIG.</div>
+            </div>
+
+            <div class="org-card">
+                <h4>Google Developer Student Clubs (GDSC)</h4>
+                <div class="org-role"><i class="fa-brands fa-google"></i> Member (09/2021 – 06/2022)</div>
+                <div class="org-desc">Participated in tech workshops, developer hackathons, and Google Cloud learning sessions.</div>
+            </div>
+
+            <div class="org-card">
+                <h4>SAMM TEST & AUTOMATION</h4>
+                <div class="org-role"><i class="fa-solid fa-user-check"></i> HR & Personnel Admin Intern (07/2021 – 08/2021)</div>
+                <div class="org-desc">Gained practical exposure to workforce planning, recruitment workflows, and personnel administration dynamics.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Single Clean Contact CTA -->
+    <section class="contact-cta container">
+        <div class="cta-glass-box">
+            <h2>Let's Build High-Performance Data Systems</h2>
+            <p>Available for Data Engineer, BI Engineer, or Full-Stack Data roles internationally.</p>
+            <div class="cta-link-group">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=adam.messaoudi67@gmail.com" target="_blank" class="nav-cta" style="padding: 14px 32px; font-size: 1rem;">
+                    <i class="fa-solid fa-paper-plane"></i> Send Gmail Message
+                </a>
+                <a href="https://linkedin.com/in/adammessaoudi" target="_blank" class="nav-cta" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-line); color: var(--text-main); box-shadow: none;">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            © 2026 Adam Messaoudi • Data Engineering & Full-Stack Architect
+        </div>
+    </footer>
+
+    <!-- Interactive Canvas, Terminal CLI, Node Flow & Theme Switcher Scripts -->
+    <script>
+        // Theme Switcher Functionality
+        function setTheme(themeName) {
+            document.documentElement.setAttribute('data-theme', themeName);
+            document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
+            if (themeName === 'cyberpunk') document.querySelectorAll('.theme-btn')[0].classList.add('active');
+            if (themeName === 'midnight') document.querySelectorAll('.theme-btn')[1].classList.add('active');
+            if (themeName === 'light') document.querySelectorAll('.theme-btn')[2].classList.add('active');
+        }
+
+        // Project Filtering Logic
+        function filterProjects(cat) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const cards = document.querySelectorAll('.p-card');
+            cards.forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-category') === cat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Interactive Architecture Node Selector
+        function selectNode(nodeType) {
+            document.querySelectorAll('.p-node').forEach(n => n.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            const detailsBox = document.getElementById('node-details');
+
+            if (nodeType === 'ingestion') {
+                detailsBox.innerHTML = `<strong style="color: var(--primary);">✦ Layer 1: Data Ingestion & Web Scraping</strong><br>Integrated enterprise APIs (Salesforce) and automated high-scale web scrapers (Selenium, BeautifulSoup) to harvest 130,000+ workshop reviews and industrial B2B catalog specifications across <strong>ZF Group</strong>, <strong>CAN 2025</strong>, and <strong>B2B Industrial E-Commerce</strong>.`;
+            } else if (nodeType === 'etl') {
+                detailsBox.innerHTML = `<strong style="color: var(--primary);">✦ Layer 2: ETL / ELT Pipelines & Orchestration</strong><br>Engineered staging layers, automated data flows, and enterprise ETL pipelines utilizing <strong>Microsoft Fabric OneLake Dataflows Gen2</strong>, <strong>Talend Open Studio</strong>, and custom <strong>Node.js ETL workers</strong> across <strong>ZF Group</strong>, <strong>Infraway Tunisia</strong>, and <strong>PGS International</strong>.`;
+            } else if (nodeType === 'storage') {
+                detailsBox.innerHTML = `<strong style="color: var(--primary);">✦ Layer 3: Storage & Data Warehousing</strong><br>Designed robust dimensional data warehouses, star schemas, Delta Lake tables, and transactional relational/NoSQL stores in <strong>PostgreSQL</strong>, <strong>MySQL</strong>, <strong>MongoDB</strong>, and <strong>Oracle SQL</strong> across <strong>Infraway</strong>, <strong>Orange Tunisia</strong>, <strong>SecurAssur</strong>, and <strong>Olympic Games</strong>.`;
+            } else if (nodeType === 'analytics') {
+                detailsBox.innerHTML = `<strong style="color: var(--primary);">✦ Layer 4: Analytics, Power BI & MLOps</strong><br>Built 15+ interactive self-service BI dashboards with complex DAX measures, player performance scoring models, and MLOps predictive pipelines (SageMaker, MLflow, Scikit-Learn) across <strong>ZF Group</strong>, <strong>Infraway</strong>, <strong>CAN 2025</strong>, <strong>Orange</strong>, and <strong>Talent Matching</strong>.`;
+            }
+        }
+
+        // Interactive Terminal Console Script
+        const termInput = document.getElementById('term-input');
+        const termOutput = document.getElementById('term-dynamic-output');
+
+        function appendLine(htmlContent) {
+            const line = document.createElement('div');
+            line.className = 't-line';
+            line.innerHTML = htmlContent;
+            termOutput.appendChild(line);
+            const termBody = document.getElementById('term-body');
+            termBody.scrollTop = termBody.scrollHeight;
+        }
+
+        function execCmd(cmdStr) {
+            const cleanCmd = cmdStr.trim().toLowerCase();
+            appendLine(`<span class="t-prompt">adam@data-engine:~$</span> <span class="t-cmd">${cmdStr}</span>`);
+
+            if (cleanCmd === 'help') {
+                appendLine(`
+                    <span class="t-highlight">AVAILABLE COMMANDS:</span><br>
+                    • <span class="t-success">whoami</span> : Display Adam's core engineer profile<br>
+                    • <span class="t-success">list-all-projects</span> : List all 12 projects across Data, Web & Systems<br>
+                    • <span class="t-success">list-data-certs</span> : Filter strict Data & MLOps certifications<br>
+                    • <span class="t-success">tech-stack</span> : Output full data tech & scraping matrix<br>
+                    • <span class="t-success">contact</span> : Open direct Gmail window<br>
+                    • <span class="t-success">clear</span> : Clear terminal output
+                `);
+            } else if (cleanCmd === 'whoami') {
+                appendLine(`
+                    <span class="t-success">[SYSTEM OK]</span><br>
+                    ✦ Name: Adam Messaoudi<br>
+                    ✦ Role: Data Engineer | Business Intelligence Engineer | Data Analyst<br>
+                    ✦ Location: Wolfsburg, Germany<br>
+                    ✦ Degree: Master's Equivalent Computer Science Engineer
+                `);
+            } else if (cleanCmd === 'list-all-projects') {
+                appendLine(`
+                    <span class="t-highlight">ALL 12 ENGINEERING PROJECTS:</span><br>
+                    1. 🗄️ ZF Group — Digital Monitoring (Fabric, Power BI, Selenium Scraper, MLOps)<br>
+                    2. 🗄️ Infraway Tunisia — Telecom Data Warehouse (Talend, MySQL, Power BI)<br>
+                    3. 🗄️ PGS International — Oil Depots Inventory ETL (Talend, PostgreSQL, BeautifulSoup)<br>
+                    4. 🗄️ Orange Tunisia — Sales Tracking Analytics (Power BI, MongoDB, Python)<br>
+                    5. 🗄️ CAN 2025 Morocco — Hidden Talent Discovery (Selenium Scraper, Power BI)<br>
+                    6. ⚙️ B2B E-Commerce & Chrome Extension ETL (Next.js, Manifest V3 Extension, Node.js)<br>
+                    7. ⚙️ Talent Matching Platform (Flask, Python ML)<br>
+                    8. ⚙️ FTF Digital Portal (React, TypeScript, SVG Ticket)<br>
+                    9. 💻 SecurAssur Insurance Ecosystem (Symfony, UML)<br>
+                    10. 💻 Douc'Heure Beauty E-Commerce (PHP, MySQL)<br>
+                    11. 💻 Olympic Games Stadium System (C++, Arduino, Oracle SQL)<br>
+                    12. 💻 2D Game Engine in C (C Language, Photoshop)
+                `);
+            } else if (cleanCmd === 'list-data-certs') {
+                appendLine(`
+                    <span class="t-highlight">STRICT DATA, MLOPS & CLOUD CREDENTIALS:</span><br>
+                    1. 🧬 Duke MLOps Specialization (ID: 3VMNKB5MDXIH)<br>
+                    2. 💼 SAP Solution Implementation (ID: EMVTWI6WTPAG)<br>
+                    3. 🧠 NVIDIA Transformer NLP Applications (ID: pF329a7-SwSyOeTLS-WONQ)<br>
+                    4. 🛡️ NVIDIA AI Anomaly Detection (ID: tsySqX7jSfWy5q22OMI6hw)<br>
+                    5. 📊 Talend Data Integration Certification Prep (ID: 59DWLMS1NOXW)<br>
+                    6. ⚙️ Duke MLOps Tools: MLflow & Hugging Face (ID: BJM8VFE4SUY7)<br>
+                    7. 📦 Duke MLOps Platforms: SageMaker & Azure ML (ID: JP1K8KBZ8G1P)<br>
+                    8. 🔀 Duke DevOps, DataOps, MLOps (ID: 5W3VYSM1CXXA)<br>
+                    9. 🐍 Duke Python Essentials for MLOps (ID: 65EOMYN9TNAG)<br>
+                    10. ☁️ Microsoft Azure AZ-900 & Cloud Services (IDs: V8A8XU4RSP2S / UNUXC3XIV3NC)<br>
+                    11. 🐍 HackerRank Python (Basic) & R (Basic)
+                `);
+            } else if (cleanCmd === 'tech-stack') {
+                appendLine(`
+                    <span class="t-highlight">DATA ENGINEERING & TECH STACK:</span><br>
+                    • <span class="t-success">Data Platforms</span>: Microsoft Fabric (OneLake, Dataflows Gen2), Power BI (DAX, Power Query), Talend, Data Warehousing, Dimensional Models, Salesforce ETL<br>
+                    • <span class="t-success">Scraping & Ingestion</span>: Python (Selenium, BeautifulSoup, Pandas, NumPy), REST APIs, Chrome Extensions (Manifest V3), Node.js Extractor<br>
+                    • <span class="t-success">Generative AI & AI Tools</span>: Microsoft Fabric Copilot, Power BI Copilot, Azure OpenAI, GitHub Copilot, AI-assisted Development, Text-to-SQL, Statistical Analysis<br>
+                    • <span class="t-success">MLOps & ML</span>: MLflow, Amazon SageMaker, Azure ML, NVIDIA NLP Transformers, Anomaly Detection, Scikit-Learn<br>
+                    • <span class="t-success">Databases & Cloud</span>: PostgreSQL, MySQL & MySQL2, MS SQL Server, MongoDB, Oracle SQL, Delta Lake, Microsoft Azure<br>
+                    • <span class="t-success">Languages</span>: Python, Next.js / React.js (TypeScript), PHP / Symfony, C / C++
+                `);
+            } else if (cleanCmd === 'contact') {
+                appendLine(`<span class="t-success">Opening Gmail window to adam.messaoudi67@gmail.com...</span>`);
+                window.open('https://mail.google.com/mail/?view=cm&fs=1&to=adam.messaoudi67@gmail.com', '_blank');
+            } else if (cleanCmd === 'clear') {
+                termOutput.innerHTML = '';
+            } else {
+                appendLine(`<span style="color:#ff5f56;">Command not found: '${cmdStr}'. Type 'help' for valid options.</span>`);
+            }
+            termInput.value = '';
+        }
+
+        termInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                execCmd(this.value);
+            }
+        });
+
+        // Particle Background Canvas
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, particles;
+
+        function initCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < 45; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.4,
+                    vy: (Math.random() - 0.5) * 0.4,
+                    radius: Math.random() * 2 + 1
+                });
+            }
+        }
+
+        function drawCanvas() {
+            ctx.clearRect(0, 0, width, height);
+            const style = getComputedStyle(document.documentElement);
+            const primaryColor = style.getPropertyValue('--primary').trim() || '#00f2fe';
+            
+            ctx.fillStyle = primaryColor;
+            ctx.strokeStyle = primaryColor;
+
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.globalAlpha = 0.5;
+                ctx.fill();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 140) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.globalAlpha = (1 - dist / 140) * 0.15;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(drawCanvas);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        drawCanvas();
+        if (!window.location.hash) {
+            window.scrollTo(0, 0);
+        }
+
+        // Typing Effect
+        const roles = ["Data Engineer", "BI Engineer", "Full-Stack Data Developer", "ETL Architect"];
+        let roleIndex = 0, charIndex = 0, isDeleting = false;
+        const typingElement = document.getElementById('typing-role');
+
+        function typeEffect() {
+            const currentRole = roles[roleIndex];
+            if (isDeleting) {
+                typingElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                setTimeout(typeEffect, 500);
+            } else {
+                setTimeout(typeEffect, isDeleting ? 40 : 80);
+            }
+        }
+        typeEffect();
+
+        // Mobile Menu Navigation Toggle
+        function toggleMobileMenu() {
+            const menu = document.querySelector('.nav-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('mobile-open');
+            if (icon) {
+                if (menu.classList.contains('mobile-open')) {
+                    icon.className = 'fa-solid fa-xmark';
+                } else {
+                    icon.className = 'fa-solid fa-bars';
+                }
+            }
+        }
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.querySelector('.nav-menu');
+                const icon = document.getElementById('menu-icon');
+                if (menu && menu.classList.contains('mobile-open')) {
+                    menu.classList.remove('mobile-open');
+                    if (icon) icon.className = 'fa-solid fa-bars';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
