@@ -1198,7 +1198,7 @@
                         <a href="#projects" class="nav-cta" style="background: transparent; border: 1px solid var(--border-line); color: var(--text-main); box-shadow: none; padding: 12px 20px; font-size: 0.92rem;">
                             <i class="fa-solid fa-code-branch"></i> <span data-i18n="hero-btn-projects">View Projects (12)</span>
                         </a>
-                        <a id="hero-cv-btn" href="./CV_Adam_Messaoudi_EN.pdf" download="CV_Adam_Messaoudi_EN.pdf" target="_blank" class="nav-cta" style="background: rgba(0, 242, 254, 0.1); border: 1px solid var(--primary-glow); color: var(--primary); padding: 12px 20px; font-size: 0.92rem;">
+                        <a id="hero-cv-btn" href="CV_Adam_Messaoudi_EN.pdf" target="_blank" class="nav-cta" style="background: rgba(0, 242, 254, 0.1); border: 1px solid var(--primary-glow); color: var(--primary); padding: 12px 20px; font-size: 0.92rem;">
                             <i class="fa-solid fa-file-pdf"></i> <span data-i18n="hero-btn-cv">Download CV (PDF)</span>
                         </a>
                     </div>
@@ -2350,14 +2350,11 @@
             const cvBtn = document.getElementById('hero-cv-btn');
             if (cvBtn) {
                 if (lang === 'fr') {
-                    cvBtn.href = './CV_Adam_Messaoudi_FR.pdf';
-                    cvBtn.setAttribute('download', 'CV_Adam_Messaoudi_FR.pdf');
+                    cvBtn.href = 'CV_Adam_Messaoudi_FR.pdf';
                 } else if (lang === 'de') {
-                    cvBtn.href = './Lebenslauf_Adam_Messaoudi.pdf';
-                    cvBtn.setAttribute('download', 'Lebenslauf_Adam_Messaoudi.pdf');
+                    cvBtn.href = 'Lebenslauf_Adam_Messaoudi.pdf';
                 } else {
-                    cvBtn.href = './CV_Adam_Messaoudi_EN.pdf';
-                    cvBtn.setAttribute('download', 'CV_Adam_Messaoudi_EN.pdf');
+                    cvBtn.href = 'CV_Adam_Messaoudi_EN.pdf';
                 }
             }
 
